@@ -1,4 +1,4 @@
-usb-lock
+USB Lock
 ========
 
 A very simple bash script to unlock or lock the screen if a specific USB flash drive is plugged or unplugged.
