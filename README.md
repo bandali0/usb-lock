@@ -17,6 +17,7 @@ Let's get started!
 The output should have a syntax similar to this:
     Bus 001 Device 005: ID 0951:1643 Kingston Technology DataTraveler G3 4GB
 Now we have idVendor and idProduct. In this example, `idVendor` is `0951` and `idProduct` is `1643`.
+
 We also have the `Bus` and `Device`, which are respectly `001` and `005`. We are going to use them in the next step.
 
 3. Now we need to get the unique serial number of our flash drive, so the system will only be unlocked with our flash drive, not any others.
