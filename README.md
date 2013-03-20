@@ -49,18 +49,18 @@ After doing the replacements, this is the new contents of my file:
     ```
 
 __6)__ Now we are ready to copy the file to its original location. Copy `91-usbkey.rules` from the repository folder to `/etc/udev/rulesd.d` directory.  
-_Note:_ You need root access to copy the file to the specified path.
+_Note: You need root access to copy the file to the specified path._
 
 __7)__ Now we have to copy the bash scripts that do the actual lock and unlock; but before that, give them the execute permission:  
     `chmod +x onusbplug.sh && chmod +x onusbunplug.sh`
 
 After executing the above command, move the files to `/usr/local/bin` folder.  
-_Note:_ You need root access to copy the files to the specified path.
+_Note: You need root access to copy the files to the specified path._
 
 __8)__ Restart the udev service by typing `sudo service udev restart`.
 
 __9)__ Copy the `.lockenabled` (which is hidden) file from the repository to your home directory and give it execution permissions:
-        `chmod +x .lockenabled`
+    `chmod +x .lockenabled`
 
 __10)__ Whenever you want to enable the lock, open a terminal and type `./.lockenabled`, then unplug your flash drive.
 
