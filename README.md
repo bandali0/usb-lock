@@ -39,7 +39,7 @@ We will modify it in the next step.
 
 __5)__ In the `91-usbkey.rules` file, replace `IDVENDORHERE` with the idVendor that you got from the second step. Mine was `0951`.  
 Then replace `IDPRODUCTHERE` with the one you got from the second step.  
-Finally, replace the two `SERIALHERE`s with the serial number of your flash drive.
+Replace the two `SERIALHERE`s with the serial number of your flash drive.
 
 After doing the replacements, this is the new contents of my file:
 
@@ -49,23 +49,24 @@ After doing the replacements, this is the new contents of my file:
     ```
 
 __6)__ Now we are ready to copy the file to its original location. Copy `91-usbkey.rules` from the repository folder to `/etc/udev/rulesd.d` directory.  
-Note: You need root access to copy the file to the specified path.
+_Note:_ You need root access to copy the file to the specified path.
 
 __7)__ Now we have to copy the bash scripts that do the actual lock and unlock; but before that, give them the execute permission:  
-`chmod +x onusbplug.sh && chmod +x onusbunplug.sh`
+    `chmod +x onusbplug.sh && chmod +x onusbunplug.sh`
 
 After executing the above command, move the files to `/usr/local/bin` folder.  
-Note: You need root access to copy the files to the specified path.
+_Note:_ You need root access to copy the files to the specified path.
 
 __8)__ Restart the udev service by typing `sudo service udev restart`.
 
 __9)__ Copy the `.lockenabled` (which is hidden) file from the repository to your home directory and give it execution permissions:
-`chmod +x .lockenabled`
+        `chmod +x .lockenabled`
 
 __10)__ Whenever you want to enable the lock, open a terminal and type `./.lockenabled`, then unplug your flash drive.
 
 __11)__ Enjoy!
 
+###Questions?
 If you have any questions, just leave a comment on the [blog post](http://aminbandali.com/blog/usb-lock-version-one/) and I'll try to help you.
 
 ##Bonus tips
