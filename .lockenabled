@@ -1,0 +1,3 @@
+#!/bin/bash
+
+read -p "USB Lock is now running. Press any key to exit!"
