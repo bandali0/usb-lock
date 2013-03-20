@@ -59,7 +59,8 @@ Note: You need root access to copy the files to the specified path.
 
 __8)__ Restart the udev service by typing `sudo service udev restart`.
 
-__9)__ Copy the `.lockenabled` (which is hidden) file from the repository to your home directory and give it execution permissions (`chmod +x .lockenabled`).
+__9)__ Copy the `.lockenabled` (which is hidden) file from the repository to your home directory and give it execution permissions:
+`chmod +x .lockenabled`
 
 __10)__ Whenever you want to enable the lock, open a terminal and type `./.lockenabled`, then unplug your flash drive.
 
