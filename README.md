@@ -31,10 +31,8 @@ The output is the serial number of your flash drive. For example `001373987CF5BA
 
 4. Now we have all of the information that we need. Browse to the directory of the repository that you downloaded in the first step. Open this file: `91-usbkey.rules`
 Initially, it looks like this:
-
     KERNEL=="sd?1", ATTRS{idVendor}=="IDVENDORHERE", ATTRS{idProduct}=="IDPRODUCTHERE", ATTRS{serial}=="SERIALHERE", RUN+="/usr/local/bin/onusbplug.sh"
     ACTION=="remove", ENV{ID_SERIAL_SHORT}=="SERIALHERE", ENV{MINOR}="17", RUN+="/usr/local/bin/onusbunplug.sh"
-
 We will modify it in the next step.
 
 5. In the `91-usbkey.rules` file, replace `IDVENDORHERE` with the idVendor that you got from the second step. Mine was `0951`.
@@ -42,10 +40,8 @@ Then replace `IDPRODUCTHERE` with the one you got from the second step.
 Finally, replace the two `SERIALHERE`s with the serial number of your flash drive.
 
 After doing the replacements, this is the new contents of my file:
-
     KERNEL=="sd?1", ATTRS{idVendor}=="0951", ATTRS{idProduct}=="1643", ATTRS{serial}=="001373987CF5BA80D6210131", RUN+="/usr/local/bin/onusbplug.sh"
     ACTION=="remove", ENV{ID_SERIAL_SHORT}=="001373987CF5BA80D6210131", RUN+="/usr/local/bin/onusbunplug.sh"
-
 6. Now we are ready to copy the file to its original location. Copy `91-usbkey.rules` from the repository folder to `/etc/udev/rulesd.d` directory.
 Note: You need root access to copy the file to the specified path.
 
