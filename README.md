@@ -43,7 +43,7 @@ Finally, replace the two `SERIALHERE`s with the serial number of your flash driv
 
 After doing the replacements, this is the new contents of my file:
 
-KERNEL=="sd?1", ATTRS{idVendor}=="0951", ATTRS{idProduct}=="1643", ATTRS{serial}=="001373987CF5BA80D6210131", RUN+="/usr/local/bin/onusbplug.sh"
+    KERNEL=="sd?1", ATTRS{idVendor}=="0951", ATTRS{idProduct}=="1643", ATTRS{serial}=="001373987CF5BA80D6210131", RUN+="/usr/local/bin/onusbplug.sh"
     ACTION=="remove", ENV{ID_SERIAL_SHORT}=="001373987CF5BA80D6210131", RUN+="/usr/local/bin/onusbunplug.sh"
 
 6. Now we are ready to copy the file to its original location. Copy `91-usbkey.rules` from the repository folder to `/etc/udev/rulesd.d` directory.
