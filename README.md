@@ -17,16 +17,12 @@ Let's get started!
 
 The output should have a syntax similar to this:
     `Bus 001 Device 005: ID 0951:1643 Kingston Technology DataTraveler G3 4GB`
-
 Now we have idVendor and idProduct. In this example, `idVendor` is `0951` and `idProduct` is `1643`.
-
 We also have the `Bus` and `Device`, which are respectly `001` and `005`. We are going to use them in the next step.
 
 3. Now we need to get the unique serial number of our flash drive, so the system will only be unlocked with our flash drive, not any others.
-
 In the following command, replace `001` and `005` with the `Bus` and `Device` that you got from the output of the previous command. Then execute it:
     `lsusb -v -s 001:005 | awk -F " " '($1 == "iSerial") {print $3}' | grep -v ":" | grep .`
-
 The output is the serial number of your flash drive. For example `001373987CF5BA80D6210131`.
 
 4. Now we have all of the information that we need. Browse to the directory of the repository that you downloaded in the first step. Open this file: `91-usbkey.rules`
@@ -62,7 +58,7 @@ Note: You need root access to copy the files to the specified path.
 
 If you have any questions, just leave a comment on the [blog post](http://aminbandali.com/blog/usb-lock-version-one/) and I'll try to help you.
 
-
+###Bonus tips
 __Bonus tip 1:__ You can monitor the system behaviour on plug and unplugging usb devices by executing `udevadm monitor --environment --udev`. Execute the command and then plug or unplug your usb device to see the logs.
 
 __Bonus tip 2:__ If you need information on all usb devices connect to your system, use `lsusb -v`.
