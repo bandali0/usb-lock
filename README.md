@@ -10,34 +10,40 @@ In the descriptions below, we first collect the required information for out ude
 
 Let's get started!
 
-1. Clone the repository or download it as [zip](https://github.com/aminbandali/usb-lock/archive/master.zip) and extract it.
+- Clone the repository or download it as [zip](https://github.com/aminbandali/usb-lock/archive/master.zip) and extract it.
 
-2. Connect your desired USB flash drive to your system. In the following command, replace _Kingston_ with the name of the vendor of your flash disk then open a terminal and execute it:
+- Connect your desired USB flash drive to your system. In the following command, replace _Kingston_ with the name of the vendor of your flash disk then open a terminal and execute it:
     `lsusb | grep "Kingston"`
 
 The output should have a syntax similar to this:
     `Bus 001 Device 005: ID 0951:1643 Kingston Technology DataTraveler G3 4GB`
+
 Now we have idVendor and idProduct. In this example, `idVendor` is `0951` and `idProduct` is `1643`.
 We also have the `Bus` and `Device`, which are respectly `001` and `005`. We are going to use them in the next step.
 
-3. Now we need to get the unique serial number of our flash drive, so the system will only be unlocked with our flash drive, not any others.
+- Now we need to get the unique serial number of our flash drive, so the system will only be unlocked with our flash drive, not any others.
 In the following command, replace `001` and `005` with the `Bus` and `Device` that you got from the output of the previous command. Then execute it:
+
     `lsusb -v -s 001:005 | awk -F " " '($1 == "iSerial") {print $3}' | grep -v ":" | grep .`
 The output is the serial number of your flash drive. For example `001373987CF5BA80D6210131`.
 
-4. Now we have all of the information that we need. Browse to the directory of the repository that you downloaded in the first step. Open this file: `91-usbkey.rules`
+- Now we have all of the information that we need. Browse to the directory of the repository that you downloaded in the first step. Open this file: `91-usbkey.rules`
 Initially, it looks like this:
+
     KERNEL=="sd?1", ATTRS{idVendor}=="IDVENDORHERE", ATTRS{idProduct}=="IDPRODUCTHERE", ATTRS{serial}=="SERIALHERE", RUN+="/usr/local/bin/onusbplug.sh"
     ACTION=="remove", ENV{ID_SERIAL_SHORT}=="SERIALHERE", ENV{MINOR}="17", RUN+="/usr/local/bin/onusbunplug.sh"
+
 We will modify it in the next step.
 
-5. In the `91-usbkey.rules` file, replace `IDVENDORHERE` with the idVendor that you got from the second step. Mine was `0951`.
+- In the `91-usbkey.rules` file, replace `IDVENDORHERE` with the idVendor that you got from the second step. Mine was `0951`.
 Then replace `IDPRODUCTHERE` with the one you got from the second step.
 Finally, replace the two `SERIALHERE`s with the serial number of your flash drive.
 
 After doing the replacements, this is the new contents of my file:
+
     KERNEL=="sd?1", ATTRS{idVendor}=="0951", ATTRS{idProduct}=="1643", ATTRS{serial}=="001373987CF5BA80D6210131", RUN+="/usr/local/bin/onusbplug.sh"
     ACTION=="remove", ENV{ID_SERIAL_SHORT}=="001373987CF5BA80D6210131", RUN+="/usr/local/bin/onusbunplug.sh"
+
 6. Now we are ready to copy the file to its original location. Copy `91-usbkey.rules` from the repository folder to `/etc/udev/rulesd.d` directory.
 Note: You need root access to copy the file to the specified path.
 
