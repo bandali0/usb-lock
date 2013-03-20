@@ -30,8 +30,8 @@ The output is the serial number of your flash drive. For example `001373987CF5BA
 - Now we have all of the information that we need. Browse to the directory of the repository that you downloaded in the first step. Open this file: `91-usbkey.rules`
 Initially, it looks like this:
 
-    KERNEL=="sd?1", ATTRS{idVendor}=="IDVENDORHERE", ATTRS{idProduct}=="IDPRODUCTHERE", ATTRS{serial}=="SERIALHERE", RUN+="/usr/local/bin/onusbplug.sh"  
-    ACTION=="remove", ENV{ID_SERIAL_SHORT}=="SERIALHERE", ENV{MINOR}="17", RUN+="/usr/local/bin/onusbunplug.sh"
+    KERNEL=="sd?1", ATTRS{idVendor}=="IDVENDORHERE", ATTRS{idProduct}=="IDPRODUCT", ATTRS{serial}=="SERIALHERE", RUN+="/usr/local/bin/onusbplug.sh"
+    ACTION=="remove", ENV{ID_SERIAL_SHORT}=="SERIALHERE", RUN+="/usr/local/bin/onusbunplug.sh"
 
 We will modify it in the next step.
 
