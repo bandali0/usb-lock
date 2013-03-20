@@ -57,8 +57,8 @@ Note: You need root access to copy the files to the specified path.
 If you have any questions, just leave a comment on the [blog post](http://aminbandali.com/blog/usb-lock-version-one/) and I'll try to help you.
 
 
-_Bonus tip 1:_ You can monitor the system behaviour on plug and unplugging usb devices by executing `udevadm monitor --environment --udev`. Execute the command and then plug or unplug your usb device to see the logs.
+__Bonus tip 1:__ You can monitor the system behaviour on plug and unplugging usb devices by executing `udevadm monitor --environment --udev`. Execute the command and then plug or unplug your usb device to see the logs.
 
-_Bonus tip 2:_ If you need information on all usb devices connect to your system, use `lsusb -v`.
+__Bonus tip 2:__ If you need information on all usb devices connect to your system, use `lsusb -v`.
 
-_Bonus tip 3:_ If you need even more information about your usb flash drive, you can use `ls -l /dev/disk/by-id` to get the sdX where your device is connected and then use `udevadm info --query=all --path=/sys/block/sdX`.
+__Bonus tip 3:__ If you need even more information about your usb flash drive, you can use `ls -l /dev/disk/by-id` to get the sdX where your device is connected and then use `udevadm info --query=all --path=/sys/block/sdX`.
