@@ -67,7 +67,7 @@ __10)__ Whenever you want to enable the lock, open a terminal and type `./.locke
 __11)__ Enjoy!
 
 ###Questions?
-If you have any questions, just leave a comment on the [blog post](http://aminbandali.com/blog/usb-lock-version-one/) and I'll try to help you.
+If you have any questions, just leave a comment on the [blog post](http://aminbandali.com/2013/04/17/usb-lock-version-one/) and I'll try to help you.
 
 ##Bonus tips
 __Bonus tip 1:__ You can monitor the system behaviour on plug and unplugging usb devices by executing `udevadm monitor --environment --udev`. Execute the command and then plug or unplug your usb device to see the logs.
